@@ -9,7 +9,7 @@ const options = {
 	}
 };
 
-const main = document.getElementById("content");
+const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
@@ -20,7 +20,7 @@ async function getFilms(url) {
     const data = await resp.json();
     console.log(data);
     showFilms(data.results);
-    .catch(err => console.error(err));
+    // .catch(err => console.error(err));
 }
 
     
@@ -47,11 +47,13 @@ function showFilms(films) {
     });
 }
 
-form.addEventListener("submit", (e) => 
+form.addEventListener("submit", (e) => {
 e.preventDefault();
 const searchTerm = search.value;
 
 if (searchTerm) {
 getMovies(SEARCHAPI + searchTerm);
 search.value = "";
+}
 });
+
